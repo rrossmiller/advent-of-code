@@ -6,6 +6,7 @@ const LOWERCASE_OFFSET: u8 = 97;
 
 pub fn run() {
     part1();
+    part2();
 }
 
 fn part1() {
@@ -30,8 +31,9 @@ fn part1() {
         }
     }
     println!("part 1 total: {}\n", ttl);
-
-    ttl = 0;
+}
+fn part2() {
+    let mut ttl = 0;
     let sacks = fs::read_to_string("data/day3_pt2.txt").expect("err reading file");
     let mut group: [&str; 2] = [""; 2];
     for (i, sack) in sacks.lines().enumerate() {
