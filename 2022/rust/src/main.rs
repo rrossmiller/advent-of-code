@@ -1,6 +1,7 @@
 use std::{env, process::exit};
 mod day3;
 mod day4;
+mod day5;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -14,5 +15,8 @@ fn main() {
         day3::run();
     } else if day == "4" {
         day4::run();
+    }
+     else if day == "5" {
+        day5::run();
     }
 }

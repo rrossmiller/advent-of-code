@@ -1,4 +1,5 @@
 rm ./target/release/adv-of-code
 cargo build --release &&
-	clear ; 
+	clear &&
 	./target/release/adv-of-code $@
+
