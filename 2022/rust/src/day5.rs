@@ -18,13 +18,29 @@ fn pt1() {
 
     let (mut stacks, directions) = read_input(data);
 
-    run_directions(&mut stacks, directions);
+    // run_directions(&mut stacks, directions);
+    run_directions_p2(&mut stacks, directions);
     for s in stacks.iter() {
-        print!("{}", s.last().unwrap());
+        print!("{}", s.last().unwrap())
     }
     println!("");
 }
 
+fn run_directions_p2(stacks: &mut Vec<Vec<char>>, directions: Vec<Direction>) {
+    let mut tmp = Vec::new();
+    for d in directions.iter() {
+        for _ in 0..d.cnt {
+            if let Some(val) = stacks[d.from - 1].pop() {
+                // stacks[d.to - 1].push(val);
+                tmp.push(val)
+            } else {
+                break;
+            }
+        }
+        tmp.iter().rev().for_each(|x| stacks[d.to - 1].push(*x));
+        tmp.clear();
+    }
+}
 fn run_directions(stacks: &mut Vec<Vec<char>>, directions: Vec<Direction>) {
     for d in directions.iter() {
         for _ in 0..d.cnt {
@@ -164,5 +180,23 @@ mod tests {
         );
 
         assert_eq!(stacks[8], vec!['T', 'P', 'M', 'F', 'Z', 'C', 'G', 'C']);
+    }
+
+    #[test]
+    fn t4() {
+        let data_path = "data/day5_pt1.txt";
+        let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
+        let (mut stacks, _) = day5::read_input(data);
+
+        day5::run_directions_p2(
+            &mut stacks,
+            vec![Direction {
+                cnt: 2,
+                from: 4,
+                to: 9,
+            }],
+        );
+
+        assert_eq!(stacks[8], vec!['T', 'P', 'M', 'F', 'Z', 'C', 'G', 'M', 'C']);
     }
 }
