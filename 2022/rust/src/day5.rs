@@ -19,7 +19,6 @@ fn pt1() {
     let (mut stacks, directions) = read_input(data);
 
     run_directions(&mut stacks, directions);
-    println!("");
     for s in stacks.iter() {
         print!("{}", s.last().unwrap());
     }
@@ -81,6 +80,7 @@ fn read_input(data: String) -> (Vec<Vec<char>>, Vec<Direction>) {
     //         break;
     //     }
     // }
+    // println!("");
 
     stacks.iter_mut().for_each(|s| s.reverse());
 
