@@ -64,6 +64,12 @@ func Seven(maxSize uint64) {
 	// fmt.Println(root)
 
 	// search for dirs with size <= maxSize
+	// part 2
+	unusedSpace := 70_000_000 - root.size
+	neededSpace := 30_000_000 - unusedSpace
+	smallestDel := unusedSpace
+	fmt.Println(unusedSpace, neededSpace)
+
 	//DFS
 	var sum uint64
 	stack := []*Dir{}
@@ -84,12 +90,15 @@ func Seven(maxSize uint64) {
 			//         push child onto stack
 			stack = append(stack, c)
 		}
+
+		//pt2
+		if current.size >= neededSpace && current.size < unusedSpace {
+			smallestDel = current.size
+		}
 	}
 	fmt.Println("p1 >>>", sum)
 
-	// part 2
-	neededSpace := 70_000_000 - root.size
-	fmt.Println("p2 >>>", neededSpace)
+	fmt.Println("p2 >>>", smallestDel)
 
 }
 
