@@ -21,10 +21,11 @@ func Seven(maxSize int) {
 	dat := read7()
 	// go through each line
 	var parent *Dir
-	var current Dir
-	// current := Dir{parent: parent, path: "/", size: 0}
+	// var current Dir
+	lines := strings.Split(dat, "\n")[1:]
+	current := Dir{parent: parent, path: "/", size: 0}
 
-	for _, line := range strings.Split(dat, "\n") {
+	for _, line := range lines {
 		elems := strings.Split(line, " ")
 
 		// if the line is a command
@@ -55,9 +56,10 @@ func Seven(maxSize int) {
 
 	}
 
-	// loop lines done
-    // search for dirs with size <= maxSize 
-    // sum of dir sizes
+	// search for dirs with size <= maxSize
+	//DFS
+	stack := make(chan *Dir, 20)
+	// sum of dir sizes
 
 }
 
