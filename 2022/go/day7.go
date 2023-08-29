@@ -85,7 +85,11 @@ func Seven(maxSize uint64) {
 			stack = append(stack, c)
 		}
 	}
-	fmt.Println(">>>", sum)
+	fmt.Println("p1 >>>", sum)
+
+	// part 2
+	neededSpace := 70_000_000 - root.size
+	fmt.Println("p2 >>>", neededSpace)
 
 }
 
