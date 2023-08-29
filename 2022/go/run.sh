@@ -1,3 +1,3 @@
 clear
 go build &&
-	./aoc
+	./aoc $@
