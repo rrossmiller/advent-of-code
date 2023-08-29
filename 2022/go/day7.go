@@ -8,22 +8,27 @@ import (
 )
 
 type Dir struct {
-	parent *Dir
-	path   string
-	size   int
+	parent   *Dir
+	children []*Dir
+	path     string
+	size     uint64
 }
 
 func (d Dir) String() string {
-	return fmt.Sprintf("Dir {%v %v %v}", d.parent.path, d.path, d.size)
+	par := "nil"
+	if d.parent != nil {
+		par = d.parent.path
+	}
+	return fmt.Sprintf("Dir {%v %v %v %v}", par, d.path, d.size, len(d.children))
 }
 
-func Seven(maxSize int) {
+func Seven(maxSize uint64) {
 	dat := read7()
-	// go through each line
+
 	var parent *Dir
-	// var current Dir
 	lines := strings.Split(dat, "\n")[1:]
-	current := Dir{parent: parent, path: "/", size: 0}
+	root := Dir{parent: parent, path: "/", size: 0}
+	current := &root
 
 	for _, line := range lines {
 		elems := strings.Split(line, " ")
@@ -34,32 +39,53 @@ func Seven(maxSize int) {
 			if elems[1] == "cd" {
 				// cd .. means current dir becomes the parent of the current dir
 				if elems[2] == ".." {
-					current = *parent
+					current = parent
 					parent = parent.parent
 
 				} else { // cd into the new dir
-					parent = &Dir{parent: current.parent, path: current.path, size: current.size}
-					current = Dir{parent: parent, path: elems[2], size: 0}
+					parent = current
+					current = &Dir{parent: parent, path: elems[2], size: 0}
+					parent.children = append(parent.children, current)
 				}
 			}
 		} else if i, err := strconv.Atoi(elems[0]); err == nil {
-			current.size += i
+			current.size += uint64(i)
 
-			x := 0
 			for par := current.parent; par != nil; par = par.parent {
-				par.size += i
-				x += 1
+				par.size += uint64(i)
 
 			}
 
 		}
 
 	}
+	// fmt.Println(current)
+	// fmt.Println(current.size == (206810 + 20178))
+	// fmt.Println(root)
 
 	// search for dirs with size <= maxSize
 	//DFS
-	stack := make(chan *Dir, 20)
-	// sum of dir sizes
+	var sum uint64
+	stack := []*Dir{}
+	stack = append(stack, &root)
+
+	// while stack is not empty:
+	for len(stack) > 0 {
+		//     current = pop from stack
+		current := stack[len(stack)-1]
+		stack = stack[:len(stack)-1]
+		//     process current node
+		if current.size <= maxSize {
+			sum += current.size
+
+		}
+		//     for each child in current's children:
+		for _, c := range current.children {
+			//         push child onto stack
+			stack = append(stack, c)
+		}
+	}
+	fmt.Println(">>>", sum)
 
 }
 
