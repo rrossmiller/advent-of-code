@@ -80,11 +80,12 @@ func Seven(maxSize uint64) {
 		//     current = pop from stack
 		current := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
+
 		//     process current node
 		if current.size <= maxSize {
 			sum += current.size
-
 		}
+
 		//     for each child in current's children:
 		for _, c := range current.children {
 			//         push child onto stack

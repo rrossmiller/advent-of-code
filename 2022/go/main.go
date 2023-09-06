@@ -15,6 +15,8 @@ func main() {
 		One()
 	} else if os.Args[1] == "7" {
 		Seven(100_000)
+	} else if os.Args[1] == "8" {
+		Eight()
 	}
 }
 
