@@ -11,7 +11,7 @@ pub fn run() {
 
 fn part1() {
     let mut ttl: usize = 0;
-    let sacks = fs::read_to_string("data/day3_pt1.txt").expect("err reading file");
+    let sacks = fs::read_to_string("../data/day3_pt1.txt").expect("err reading file");
     for sack in sacks.lines() {
         // split the sack into each of its compartments
         let (c1, c2) = sack.split_at(sack.len() / 2);
@@ -34,7 +34,7 @@ fn part1() {
 }
 fn part2() {
     let mut ttl = 0;
-    let sacks = fs::read_to_string("data/day3_pt2.txt").expect("err reading file");
+    let sacks = fs::read_to_string("../data/day3_pt2.txt").expect("err reading file");
     let mut group: [&str; 2] = [""; 2];
     for (i, sack) in sacks.lines().enumerate() {
         // every 3 sacks

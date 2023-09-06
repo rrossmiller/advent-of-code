@@ -9,7 +9,7 @@ pub fn run() {
 }
 
 fn pt1() {
-    let data_pth = "data/day4_pt1.txt";
+    let data_pth = "../data/day4_pt1.txt";
     let file = File::open(data_pth).expect(format!("{data_pth} not found").as_str());
     let input_buffer = io::BufReader::new(file);
 
@@ -28,7 +28,7 @@ fn pt1() {
 }
 
 fn pt2() {
-    let data_pth = "data/day4_pt1.txt";
+    let data_pth = "../data/day4_pt1.txt";
     let file = File::open(data_pth).expect(format!("{data_pth} not found").as_str());
     let input_buffer = io::BufReader::new(file);
 

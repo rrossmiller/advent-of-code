@@ -13,7 +13,7 @@ struct Direction {
     to: usize,
 }
 fn pt1() {
-    let data_path = "data/day5_pt1.txt";
+    let data_path = "../data/day5_pt1.txt";
     let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
 
     let (mut stacks, directions) = read_input(data);
@@ -142,7 +142,7 @@ mod tests {
 
     #[test]
     fn t1() {
-        let data_path = "data/day5_pt1.txt";
+        let data_path = "../data/day5_pt1.txt";
         let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
         let (stacks, _) = day5::read_input(data);
         let mut ans = vec!['T', 'R', 'D', 'H', 'Q', 'N', 'P', 'B'];
@@ -156,7 +156,7 @@ mod tests {
 
     #[test]
     fn t2() {
-        let data_path = "data/day5_pt1.txt";
+        let data_path = "../data/day5_pt1.txt";
         let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
         let (_, directions) = day5::read_input(data);
 
@@ -166,7 +166,7 @@ mod tests {
     }
     #[test]
     fn t3() {
-        let data_path = "data/day5_pt1.txt";
+        let data_path = "../data/day5_pt1.txt";
         let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
         let (mut stacks, _) = day5::read_input(data);
 
@@ -184,7 +184,7 @@ mod tests {
 
     #[test]
     fn t4() {
-        let data_path = "data/day5_pt1.txt";
+        let data_path = "../data/day5_pt1.txt";
         let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
         let (mut stacks, _) = day5::read_input(data);
 

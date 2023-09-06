@@ -8,7 +8,7 @@ pub fn run() {
 }
 
 fn decode(n: usize) {
-    let data_path = "data/day6.txt";
+    let data_path = "../data/day6.txt";
     let data = fs::read_to_string(data_path).expect(format!("{data_path} not found").as_str());
 
     let chars: Vec<char> = data.chars().collect();
