@@ -47,57 +47,56 @@ func Eight() {
 
 	for i := 1; i < len(rows)-1; i++ {
 		for j := 1; j < len(rows[i])-1; j++ {
-			score := 0
 			elem := rows[i][j]
 
-			// check left
-			// can the tree see to the boarder
 			canSeeLeft := true
 			canSeeRight := true
 			canSeeUp := true
 			canSeeDown := true
+
+			// scores
+			upScore := 0
+			downScore := 0
+			leftScore := 0
+			rightScore := 0
+
+			// check left
+			// can the tree see to the boarder
 			for k := j - 1; k >= 0; k-- {
+				leftScore++
 				if elem <= rows[i][k] {
 					canSeeLeft = false
 					break
-				} else {
-					score++
-
 				}
 			}
 
 			// check right
 			// can the tree see to the boarder
 			for k := j + 1; k < len(rows[i]); k++ {
+				rightScore++
 				if elem <= rows[i][k] {
 					canSeeRight = false
 					break
-				} else {
-
-					score++
 				}
 			}
 
 			// check above
 			// can the tree see to the boarder
 			for k := i - 1; k >= 0; k-- {
+				upScore++
 				if elem <= rows[k][j] {
 					canSeeUp = false
 					break
-				} else {
-
-					score++
 				}
 			}
 
-			// check above
+			// check below
 			// can the tree see to the boarder
 			for k := i + 1; k < len(rows); k++ {
+				downScore++
 				if elem <= rows[k][j] {
 					canSeeDown = false
 					break
-				} else {
-					score++
 				}
 			}
 
@@ -105,6 +104,7 @@ func Eight() {
 				visibleTrees++
 			}
 
+			score := upScore * downScore * leftScore * rightScore
 			if score > maxScore {
 				maxScore = score
 			}
