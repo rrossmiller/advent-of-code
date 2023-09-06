@@ -43,9 +43,11 @@ func Eight() {
 	//* * *
 	// top+bottom + (left+right) -  4corners (don't double count the corners)
 	visibleTrees := len(rows[0])*2 + len(rows)*2 - 4
+	maxScore := 0
 
 	for i := 1; i < len(rows)-1; i++ {
 		for j := 1; j < len(rows[i])-1; j++ {
+			score := 0
 			elem := rows[i][j]
 
 			// check left
@@ -59,6 +61,7 @@ func Eight() {
 					canSeeLeft = false
 					break
 				} else {
+					score++
 
 				}
 			}
@@ -71,6 +74,7 @@ func Eight() {
 					break
 				} else {
 
+					score++
 				}
 			}
 
@@ -82,6 +86,7 @@ func Eight() {
 					break
 				} else {
 
+					score++
 				}
 			}
 
@@ -92,6 +97,7 @@ func Eight() {
 					canSeeDown = false
 					break
 				} else {
+					score++
 				}
 			}
 
@@ -99,10 +105,14 @@ func Eight() {
 				visibleTrees++
 			}
 
+			if score > maxScore {
+				maxScore = score
+			}
 		}
 
 	}
 	fmt.Println(visibleTrees)
+	fmt.Println(maxScore)
 
 }
 
