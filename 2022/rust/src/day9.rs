@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+// https://adventofcode.com/2022/day/9#part2
 
 use std::fs;
 #[derive(Debug)]
@@ -18,6 +19,10 @@ struct Point {
 pub fn run() {
     let dirs = get_data();
     // let dirs = get_test_data();
+    let mut points = Vec::with_capacity(10);
+    for _ in 0..10 {
+        points.push(Point { x: 0, y: 0 });
+    }
     let mut h = Point { x: 0, y: 0 };
     let mut t = Point { x: 0, y: 0 };
     let mut visited = HashSet::from([Point { x: 0, y: 0 }]);
