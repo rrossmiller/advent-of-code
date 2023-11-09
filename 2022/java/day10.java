@@ -16,7 +16,6 @@ class day10 {
 
         for (int i = 1; i < data.size(); i++) {
             // System.out.println(data.get(i - 1) + "|" + data.get(i));
-
             if (checks.contains(i)) {
                 System.out.println(i + "|" + x + "|" + x * i);
                 ans += x * i;
