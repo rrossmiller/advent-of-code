@@ -7,18 +7,18 @@ import java.util.List;
 
 class day10 {
     public static void main(String[] args) throws IOException {
-        // List<String> data = getData();
-        List<String> data = getTestData();
+        List<String> data = getData();
+        // List<String> data = getTestData();
         int x = 1;
         int ans = 0;
-        List<Integer> checks = Arrays.asList(20, 60, 100, 140, 180, 220);// 20th, 60th, 100th, 140th,
-                                                                         // 180th, and 220th cycles
+        List<Integer> checks = Arrays.asList(20, 60, 100, 140, 180, 220); // 20th, 60th, 100th, 140th,
+                                                                          // 180th, and 220th cycles
 
         for (int i = 1; i < data.size(); i++) {
-            // System.out.println(data.get(i - 1) + "|" + data.get(i));
-            if (checks.contains(i)) {
-                System.out.println(i + "|" + x + "|" + x * i);
-                ans += x * i;
+            int s = i + 1;
+            if (checks.contains(s)) {
+                System.out.println(s + "|" + x + "|" + x * s);
+                ans += x * s;
             }
 
             if (data.get(i - 1).equals("addx")) {
@@ -33,8 +33,6 @@ class day10 {
         } else if (ans <= 11020) {
             System.out.println("too low");
         }
-        // System.out.println("too high: 14141");
-        // System.out.println("too low: 11020");
     }
 
     private static List<String> getData() throws IOException {
