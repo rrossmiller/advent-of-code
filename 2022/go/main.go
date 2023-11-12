@@ -17,6 +17,8 @@ func main() {
 		Seven(100_000)
 	} else if os.Args[1] == "8" {
 		Eight()
+	} else if os.Args[1] == "12" {
+		Day12()
 	}
 }
 
