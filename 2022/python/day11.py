@@ -1,5 +1,7 @@
 from typing import Self
 
+from tqdm import trange
+
 
 class Monkey:
     def __init__(
@@ -81,12 +83,13 @@ def get_data(pth="../data/day_11.txt") -> list[Monkey]:
 
 
 def run():
-    # pth = "test.txt"
-    # monkeys = get_data(pth)
-    monkeys = get_data()
+    pth = "test.txt"
+    monkeys = get_data(pth)
+    # monkeys = get_data()
     print()
 
-    for _ in range(20):
+    for _ in trange(20):
+        # for _ in trange(1000):
         for m in monkeys:
             while len(m.items) > 0:
                 i = m.items[0]
@@ -97,6 +100,7 @@ def run():
     print()
     ans = []
     for m in monkeys:
+        print(len(m.items))
         ans.append(m.inspections)
 
     ans = sorted(ans, reverse=True)

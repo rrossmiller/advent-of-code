@@ -4,6 +4,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day9;
+mod day11;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -23,5 +24,7 @@ fn main() {
         day6::run();
     } else if day == "9" {
         day9::run();
+    } else if day == "11" {
+        day11::run();
     }
 }

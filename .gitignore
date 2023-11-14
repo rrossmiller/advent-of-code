@@ -1,6 +1,6 @@
 build
 node_modules
-data/*.txt
+*.txt
 aoc
 target
 data/
