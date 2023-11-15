@@ -1,6 +1,7 @@
 package main
 
 import (
+	"aoc/days"
 	"fmt"
 	"os"
 )
@@ -12,20 +13,14 @@ func main() {
 	}
 
 	if os.Args[1] == "1" {
-		One()
+		days.One()
 	} else if os.Args[1] == "7" {
-		Seven(100_000)
+		days.Seven(100_000)
 	} else if os.Args[1] == "8" {
-		Eight()
+		days.Eight()
 	} else if os.Args[1] == "11" {
-		Day11()
+		days.Day11()
 	} else if os.Args[1] == "12" {
-		Day12()
-	}
-}
-
-func Check(e error) {
-	if e != nil {
-		panic(e)
+		days.Day12()
 	}
 }

@@ -5,3 +5,4 @@ aoc
 target
 data/
 *.class
+__pycache__

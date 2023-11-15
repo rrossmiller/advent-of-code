@@ -1,4 +1,4 @@
-package main
+package days
 
 import (
 	"archive/zip"
@@ -101,4 +101,9 @@ func unzip() string {
 	// b, _ := os.ReadFile("../data/1.txt")
 
 	return string(b)
+}
+func Check(e error) {
+	if e != nil {
+		panic(e)
+	}
 }
