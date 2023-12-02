@@ -1,11 +1,8 @@
-#include <cctype>
-#include <cstdio>
 #include <fstream>
 #include <string>
 #include <vector>
 
 using std::ifstream;
-using std::printf;
 using std::string;
 
 void pt1(ifstream &dataFile) {
@@ -28,11 +25,4 @@ void pt1(ifstream &dataFile) {
         sum += nums[0] * 10 + nums[nums.size() - 1];
     }
     printf("pt1: %d\n", sum);
-}
-
-int main() {
-    // open the file
-    ifstream dataFile("../data/1.txt"); // dataFile.open("../data/1.txt");
-    pt1(dataFile);
-    dataFile.close();
 }
