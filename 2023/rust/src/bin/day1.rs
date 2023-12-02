@@ -11,6 +11,7 @@ fn main() -> std::io::Result<()> {
     Ok(())
 }
 
+/// o(n)
 fn pt1(data: &String) {
     let radix = 10;
     // get nums in each line
@@ -19,14 +20,7 @@ fn pt1(data: &String) {
         let mut nums = Vec::new();
         for c in line.chars() {
             if c.is_numeric() {
-                nums.push(c.to_digit(radix).unwrap());
-                break;
-            }
-        }
-        for c in line.chars().rev() {
-            if c.is_numeric() {
-                nums.push(c.to_digit(radix).unwrap());
-                break;
+                nums.push(c.to_digit(radix).unwrap())
             }
         }
         line_nums.push(nums);
@@ -123,7 +117,6 @@ fn pt2(data: &String) {
     println!("pt2: {}\n", sum);
 }
 
-/// o(n)
 // fn pt1(data: &String) {
 //     let radix = 10;
 //     // get nums in each line
@@ -132,7 +125,14 @@ fn pt2(data: &String) {
 //         let mut nums = Vec::new();
 //         for c in line.chars() {
 //             if c.is_numeric() {
-//                 nums.push(c.to_digit(radix).unwrap())
+//                 nums.push(c.to_digit(radix).unwrap());
+//                 break;
+//             }
+//         }
+//         for c in line.chars().rev() {
+//             if c.is_numeric() {
+//                 nums.push(c.to_digit(radix).unwrap());
+//                 break;
 //             }
 //         }
 //         line_nums.push(nums);
@@ -147,7 +147,6 @@ fn pt2(data: &String) {
 //     }
 //     println!("pt1: {}\n", sum);
 // }
-
 fn read() -> io::Result<String> {
     let f = fs::read_to_string("../data/1.txt")?;
     Ok(f)
