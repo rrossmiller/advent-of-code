@@ -9,13 +9,13 @@ if __name__ == "__main__":
     testing = args.testing
 
     languages = {
-        "python": 1,
+        "python": .25,
         "go": 1,
         "rust": 1,
         "java": 1,
         "js": 0.5,
         "ts": 0.5,
-        "cpp": 0.05,
+        "cpp": 0.1,
     }
 
     languages, weights = list(languages.keys()), list(languages.values())
