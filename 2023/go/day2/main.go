@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -13,6 +14,7 @@ type Game struct {
 }
 
 func main() {
+	fmt.Println("Day 2")
 	data := getData()
 	pt1(data)
 	pt2(data)

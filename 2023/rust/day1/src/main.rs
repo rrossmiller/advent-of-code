@@ -2,6 +2,7 @@ use std::{fs, io};
 mod pt1;
 mod pt2;
 fn main() -> std::io::Result<()> {
+    println!("Day 1");
     let data = read()?;
     // let data = test_data(1);
     pt1::run(&data);

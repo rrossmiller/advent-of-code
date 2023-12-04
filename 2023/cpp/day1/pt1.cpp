@@ -9,7 +9,7 @@ void pt1(ifstream &dataFile) {
     string line;
     std::vector<int> lineNums;
     int sum = 0;
-    // int l = 0;
+    int l = 0;
     // for each line
     while (std::getline(dataFile, line)) {
         std::vector<int> nums;
@@ -21,7 +21,7 @@ void pt1(ifstream &dataFile) {
             }
         }
 
-        // l++;
+        l++;
         sum += nums[0] * 10 + nums[nums.size() - 1];
     }
     printf("pt1: %d\n", sum);
