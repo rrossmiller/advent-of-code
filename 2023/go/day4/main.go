@@ -16,10 +16,11 @@ type Card struct {
 
 func main() {
 	fmt.Println("Day 4")
-	// data := getData()
-	data:=getTestData()
+	data := getData()
+	// data := getTestData()
 	pt1(data)
-	// pt2(data)
+	pt2(data)
+
 }
 
 func getData() []Card {
@@ -71,6 +72,7 @@ func getData() []Card {
 		}
 
 		cards = append(cards, card)
+		// break
 	}
 
 	return cards

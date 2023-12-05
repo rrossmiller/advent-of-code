@@ -4,7 +4,7 @@ if [[ -e aoc ]]; then
 fi
 
 if [[ $# -eq 0 ]]; then
-	n=2
+	n=4
 else
 	n=$1
 fi

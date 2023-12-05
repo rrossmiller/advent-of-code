@@ -8,12 +8,12 @@ void pt2(ifstream& d);
 int main() {
     printf("Day 1\n");
     // open the file
-    ifstream dataFile("../data/1.txt");  // dataFile.open("../data/1.txt");
+    ifstream dataFile("../data/1.txt");
     pt1(dataFile);
-    pt2(dataFile);
     dataFile.close();
 
-    // ifstream testFile("test.txt");  // dataFile.open("../data/1.txt");
-    // pt2(testFile);
-    // testFile.close();
+    ifstream f("../data/1.txt");
+    // ifstream f("test.txt");
+    pt2(f);
+    f.close();
 }
