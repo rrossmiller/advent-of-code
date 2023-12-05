@@ -3,8 +3,10 @@ use indicatif::{ProgressBar, ProgressStyle};
 
 pub fn run(seeds: &Vec<i64>, mappings: &Vec<Vec<Mapping>>) -> (Vec<i64>, i64) {
     let bar = ProgressBar::new((seeds.len() / 2) as u64);
-    let spinner_style =
-        ProgressStyle::with_template("{wide_bar}{elapsed}/{duration}({eta})").unwrap();
+    let spinner_style = ProgressStyle::with_template(
+        "{pos}/{len}({percent}%){wide_bar}{elapsed}/{duration}({eta})",
+    )
+    .unwrap();
     bar.set_style(spinner_style);
 
     let mut all_seeds = vec![];
@@ -19,8 +21,10 @@ pub fn run(seeds: &Vec<i64>, mappings: &Vec<Vec<Mapping>>) -> (Vec<i64>, i64) {
     }
 
     let bar = ProgressBar::new(all_seeds.len() as u64);
-    let spinner_style =
-        ProgressStyle::with_template("{wide_bar}{elapsed}/{duration}({eta})").unwrap();
+    let spinner_style = ProgressStyle::with_template(
+        "{pos}/{len}({percent}%){wide_bar}{elapsed}/{duration}({eta})",
+    )
+    .unwrap();
     bar.set_style(spinner_style);
 
     // bellow is same as p1
