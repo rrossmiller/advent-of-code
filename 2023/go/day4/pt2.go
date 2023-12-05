@@ -15,7 +15,7 @@ func pt2(cards []Card) {
 		for _, n := range card.cardNumbers {
 			if contains(card.winningNumbers, n) {
 				nWinners++
-				cardMap[card.id+nWinners] += cardMap[card.id]
+				cardMap[card.id+nWinners] += cardMap[card.id] // increment the number of times a card gets copied
 			}
 		}
 	}
@@ -24,12 +24,7 @@ func pt2(cards []Card) {
 		ans += v
 	}
 
-	if ans <= 3514 {
-		fmt.Println("too low")
-	}
 	fmt.Println("pt2:", ans)
-	// fmt.Println(cardMap)
-
 }
 
 func p(c []Card) []int {
