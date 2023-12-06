@@ -1,10 +1,10 @@
 package main
 
 import (
+	"sync"
 	"sync/atomic"
 )
 
-// paraellize
 func pt1(cards []Card) int {
 	ans := 0
 	for _, card := range cards {
@@ -54,13 +54,17 @@ func pt1(cards []Card) int {
 // 	return ans
 // }
 
-func pt1Parallel(cards []Card) *atomic.Uint32 {
-	var ans atomic.Uint32
-	nWorkers := 10
+func pt1Parallel(cards []Card) *atomic.Int64 {
+	var ans atomic.Int64
+
+	nWorkers := 2
+	var wg sync.WaitGroup
 	jobs := make(chan Card, len(cards))
 	for i := 0; i < nWorkers; i++ {
+		wg.Add(1)
 		go func() {
 			run(jobs, &ans)
+			wg.Done()
 		}()
 	}
 
@@ -69,10 +73,11 @@ func pt1Parallel(cards []Card) *atomic.Uint32 {
 	}
 
 	close(jobs)
-
+	wg.Wait()
 	return &ans
 }
-func run(jobs <-chan Card, ans *atomic.Uint32) {
+
+func run(jobs <-chan Card, ans *atomic.Int64) {
 	for card := range jobs {
 		cardVal := 0
 		for _, n := range card.cardNumbers {
@@ -84,9 +89,8 @@ func run(jobs <-chan Card, ans *atomic.Uint32) {
 				}
 			}
 		}
-		ans.Add(uint32(cardVal))
+		ans.Add(int64(cardVal))
 	}
-
 }
 
 // binary search

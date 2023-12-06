@@ -6,7 +6,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
-	"time"
+	// "time"
 )
 
 type Card struct {
@@ -20,27 +20,40 @@ func main() {
 	fmt.Println("Day 4")
 	data := getData()
 	// data := getTestData()
-	times := []int64{}
-	nTests := 100_000
-	for i := 0; i < nTests; i++ {
-		start := time.Now()
-		pt1(data)
-		elapsed := time.Since(start).Nanoseconds()
-		times = append(times, elapsed)
-	}
-	nonP := meanTime(times)
-	fmt.Printf("Non Parallel: %f avg ns\n", nonP)
-	times = []int64{}
-	for i := 0; i < nTests; i++ {
-		start := time.Now()
-		pt1Parallel(data)
-		elapsed := time.Since(start).Nanoseconds()
-		times = append(times, elapsed)
-	}
-	P := meanTime(times)
-	fmt.Printf("Parallel    : %f avg ns\n", P)
-	fmt.Printf("Parallel is  %.4f times faster\n", nonP/P)
-	fmt.Println("Pt1:", pt1(data))
+	p1 := pt1(data)
+	fmt.Println("Pt1:", p1)
+
+	// parallel isn't faster, here
+	// p1p := pt1Parallel(data).Load()
+	// // p1p := pt1Parallel(data)
+	// fmt.Println(p1p)
+	// if p1p != int64(p1) {
+	// 	// if p1p != p1 {
+	// 	fmt.Printf("p1: %v\np1p: %v\n", p1, p1p)
+	// 	panic("pt1 and pt1Parallel do not produce the same answer")
+	// }
+	//
+	// times := []int64{}
+	// nTests := 100_000
+	// for i := 0; i < nTests; i++ {
+	// 	start := time.Now()
+	// 	pt1(data)
+	// 	elapsed := time.Since(start).Nanoseconds()
+	// 	times = append(times, elapsed)
+	// }
+	// nonP := meanTime(times)
+	// fmt.Printf("Non Parallel: %f avg ns\n", nonP)
+	// times = []int64{}
+	// for i := 0; i < nTests; i++ {
+	// 	start := time.Now()
+	// 	pt1Parallel(data)
+	// 	elapsed := time.Since(start).Nanoseconds()
+	// 	times = append(times, elapsed)
+	// }
+	// P := meanTime(times)
+	// fmt.Printf("Parallel    : %f avg ns\n", P)
+	// fmt.Printf("Parallel is  %.4f times faster\n", nonP/P)
+
 	fmt.Println()
 	pt2(data)
 
