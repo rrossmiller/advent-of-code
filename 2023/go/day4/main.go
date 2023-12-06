@@ -6,6 +6,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Card struct {
@@ -15,12 +16,42 @@ type Card struct {
 }
 
 func main() {
+	fmt.Println("*****")
 	fmt.Println("Day 4")
 	data := getData()
 	// data := getTestData()
-	pt1(data)
+	times := []int64{}
+	nTests := 100_000
+	for i := 0; i < nTests; i++ {
+		start := time.Now()
+		pt1(data)
+		elapsed := time.Since(start).Nanoseconds()
+		times = append(times, elapsed)
+	}
+	nonP := meanTime(times)
+	fmt.Printf("Non Parallel: %f avg ns\n", nonP)
+	times = []int64{}
+	for i := 0; i < nTests; i++ {
+		start := time.Now()
+		pt1Parallel(data)
+		elapsed := time.Since(start).Nanoseconds()
+		times = append(times, elapsed)
+	}
+	P := meanTime(times)
+	fmt.Printf("Parallel    : %f avg ns\n", P)
+	fmt.Printf("Parallel is  %.4f times faster\n", nonP/P)
+	fmt.Println("Pt1:", pt1(data))
+	fmt.Println()
 	pt2(data)
 
+}
+
+func meanTime(times []int64) float64 {
+	var n int64
+	for _, t := range times {
+		n += t
+	}
+	return float64(n) / float64(len(times))
 }
 
 func getData() []Card {
@@ -72,7 +103,6 @@ func getData() []Card {
 		}
 
 		cards = append(cards, card)
-		// break
 	}
 
 	return cards
