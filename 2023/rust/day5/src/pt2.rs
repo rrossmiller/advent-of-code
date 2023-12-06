@@ -12,7 +12,6 @@ pub fn run(seeds: &Vec<i64>, mappings: &Vec<Vec<Mapping>>) -> (Vec<i64>, i64) {
     let mut all_seeds = vec![];
     for (n, _) in seeds.iter().enumerate().skip(1).step_by(2) {
         bar.inc(1);
-        // bar.set_message(bar.duration().as_secs());
         let start = seeds[n - 1];
         let finish = seeds[n - 1] + seeds[n];
         for i in start..finish {
