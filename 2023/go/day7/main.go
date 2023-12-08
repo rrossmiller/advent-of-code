@@ -47,13 +47,14 @@ var cardOrder []string
 
 type Hand struct {
 	cards    string
+	extraCard  string
 	rank     int
 	bid      int
 	handType HandType
 }
 
 func (h Hand) String() string {
-	return fmt.Sprintf("%v %v %v %v", h.cards, h.rank, h.bid, h.handType)
+	return fmt.Sprintf("%v %v %v %v %v", h.cards, h.extraCard, h.rank, h.bid, h.handType)
 }
 
 func main() {
@@ -95,7 +96,7 @@ func main() {
 	// data := getTestData()
 
 	p1(data)
-
+	p2(data)
 }
 
 func getData() []*Hand {

@@ -24,8 +24,6 @@ func p1(hands []*Hand) {
 		slices.Sort(counts)
 		slices.Reverse(counts)
 
-		// fmt.Println(counter)
-		// fmt.Println(counts)
 		if counts[0] == 2 && counts[1] == 2 {
 			h.handType = TwoPair
 		} else if counts[0] == 3 && counts[1] == 2 {
@@ -33,7 +31,6 @@ func p1(hands []*Hand) {
 		} else {
 			h.handType = handOrderIdx[counts[0]-1]
 		}
-		// fmt.Println()
 	}
 
 	// group by hand type
@@ -77,12 +74,11 @@ func p1(hands []*Hand) {
 	slices.SortFunc(hands, func(a, b *Hand) int {
 		return cmp.Compare(a.rank, b.rank)
 	})
-	// slices.Reverse(hands)
+
 	// results
 	fmt.Println(".......")
 	sum := 0
 	for _, h := range hands {
-		fmt.Println(h)
 		sum += h.rank * h.bid
 	}
 	fmt.Println("pt1:", sum)
