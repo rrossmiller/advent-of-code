@@ -1,3 +1,5 @@
+package day3;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -171,7 +173,7 @@ class App {
     }
 
     private static List<String> readData() throws IOException {
-        Path path = Paths.get("../data/3.txt");
+        Path path = Paths.get("../../data/3.txt");
         // replace newline with space
         String s = Files.readString(path);
         List<String> data = Arrays.asList(s.split("\n"));
@@ -195,20 +197,3 @@ class App {
 
 }
 
-class Coordinate {
-    private int row;
-    private int col;
-
-    public Coordinate(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    public int row() {
-        return this.row;
-    }
-
-    public int col() {
-        return this.col;
-    }
-}
