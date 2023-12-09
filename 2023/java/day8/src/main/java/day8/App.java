@@ -31,11 +31,12 @@ class App {
         Part1.main(root, dirs);
 
         // part 2
+        // test data
         // data = testData(Test.Part2);
         // dirString = data.remove(0);
         // dirs = prepData(dirString);
 
-        List<TreeNode> roots = prepData2(data, true);
+        List<TreeNode> roots = prepData2(data);
         // System.out.println(data);
         TreeNode[] rootsArr = new TreeNode[roots.size()];
         rootsArr = roots.toArray(rootsArr);
@@ -44,8 +45,9 @@ class App {
         // Map<String, String[]> nodes = prepData2(data);
         // int i = 0;
         // for (String k : nodes.keySet()) {
-        //     i++;
-        //     System.out.println(String.format("%d %s: %s %s", i, k, nodes.get(k)[0], nodes.get(k)[1]));
+        // i++;
+        // System.out.println(String.format("%d %s: %s %s", i, k, nodes.get(k)[0],
+        // nodes.get(k)[1]));
         // }
         // Part2.main(nodes, dirs);
     }
@@ -93,20 +95,20 @@ class App {
         return treeMap.get("AAA");
     }
 
-    private static Map<String, String[]> prepData2(List<String> data) {
-        Map<String, String[]> treeMap = new HashMap<>();
-        for (String s : data) {
-            var spl1 = s.split(" = "); // id, LR
-            var spl2 = spl1[1].split(","); // LR
-            String lID = spl2[0].trim().replace("(", "");
-            String rID = spl2[1].trim().replace(")", "");
-            treeMap.put(spl1[0], new String[] { lID, rID });
-        }
+    // private static Map<String, String[]> prepData2(List<String> data) {
+    // Map<String, String[]> treeMap = new HashMap<>();
+    // for (String s : data) {
+    // var spl1 = s.split(" = "); // id, LR
+    // var spl2 = spl1[1].split(","); // LR
+    // String lID = spl2[0].trim().replace("(", "");
+    // String rID = spl2[1].trim().replace(")", "");
+    // treeMap.put(spl1[0], new String[] { lID, rID });
+    // }
+    //
+    // return treeMap;
+    // }
 
-        return treeMap;
-    }
-
-    private static List<TreeNode> prepData2(List<String> data, boolean b) {
+    private static List<TreeNode> prepData2(List<String> data) {
         Map<String, TreeNode> treeMap = new HashMap<>();
         TreeNode node;
         for (String s : data) {
