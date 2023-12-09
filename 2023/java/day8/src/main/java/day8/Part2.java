@@ -22,7 +22,6 @@ class Part2 {
 
                 var dir = dirs.get(idx);
                 // one step for each node
-                // System.out.println(i + " id: " + nodes[i]);
                 switch (dir) {
                     case L:
                         nodes[i] = nodes[i].left;
