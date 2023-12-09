@@ -69,7 +69,7 @@ class Part2 {
             }
             // one step for each node
             for (int i = 0; i < nodes.length; i++) {
-                // System.out.println(i + " id: " + nodes[i]);
+                System.out.println(i + " id: " + nodes[i]);
                 switch (dirs.get(idx)) {
                     case L:
                         nodes[i] = nodes[i].left;
@@ -80,7 +80,7 @@ class Part2 {
                 }
             }
             idx++;
-            long lim = 100_000_000;
+            long lim = 2;//100_000_000;
             if (steps > lim) {
                 System.out.println(String.format("nope.... lim: %s",
                         NumberFormat.getInstance(Locale.US).format(lim)));
