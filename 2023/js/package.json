@@ -1,0 +1,14 @@
+{
+  "name": "aoc",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "day9": "clear; bun src/day9/index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
