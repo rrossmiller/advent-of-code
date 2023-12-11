@@ -1,4 +1,5 @@
 import p1
+import p2
 
 
 def get_data(test=False) -> tuple[list[str], list[int]]:
@@ -37,6 +38,31 @@ SJLL7
 LJ.LJ"""
         ).split("\n")
 
+        # pt2
+        rows = str(
+            """...........
+.S-------7.
+.|F-----7|.
+.||.....||.
+.||.....||.
+.|L-7.F-J|.
+.|..|.|..|.
+.L--J.L--J.
+..........."""
+        ).splitlines()
+        rows = str(
+            """.F----7F7F7F7F-7....
+.|F--7||||||||FJ....
+.||.FJ||||||||L7....
+FJL7L7LJLJ||LJ.L-7..
+L--J.L7...LJS7F-7L7.
+....F-J..F7FJ|L7L7L7
+....L7.F7||L7|.L7L7|
+.....|FJLJ|FJ|F7|.LJ
+....FJL-7.||.||||...
+....L---J.LJ.LJLJ..."""
+        ).splitlines()
+
     for i, l in enumerate(rows):
         for j, c in enumerate(l):
             if c == "S":
@@ -59,13 +85,13 @@ if __name__ == "__main__":
     S is the starting position of the animal; there is a pipe on this tile, but your sketch doesn't show what shape the pipe has.
     """
     print("****")
-    testing = False
+    testing = True
     data, start = get_data(testing)
     # print(f"{start= }")
     # print(data)
-    print()
-    dist = p1.run(start, data)
-    if testing:
-        assert dist == 4 or dist == 8, f"dist: {dist}"
+    # print()
+    # dist = p1.run(start, data)
+    # print(f"p1: {dist}")
 
-    print(f"p1: {dist}")
+    enclosed = p2.run(start, data)
+    print(f"p2: {enclosed}")
