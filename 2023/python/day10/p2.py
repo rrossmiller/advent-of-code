@@ -123,9 +123,9 @@ def pip(data: list[str], loop: set[str]):
                     if rx < cols - 1:
                         rx += 1
                     # if to_key((i, lx)) in loop and data[i][lx] != "-":
-                    if data[i][lx] == "|":
+                    if data[i][lx] == "-":
                         edges += 1
-                    if data[i][rx] == "|":
+                    if data[i][rx] == "-":
                         edges += 1
 
                     # vert
@@ -134,9 +134,9 @@ def pip(data: list[str], loop: set[str]):
                         uy -= 1
                     if dy < rows - 1:
                         dy += 1
-                    if data[uy][j] != "-":
+                    if data[uy][j] != "|":
                         edges += 1
-                    if data[dy][j] != "-":
+                    if data[dy][j] != "|":
                         edges += 1
                 if edges % 2 != 0 and edges > 0:
                     cnt += 1
