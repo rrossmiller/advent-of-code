@@ -30,5 +30,5 @@ void part1(vector<string> &data, vector<coordinate> &galaxies) {
         }
     }
 
-    printf("part1: %d\n", sum);
+    printf("ans: %d\n", sum);
 }

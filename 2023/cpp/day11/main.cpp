@@ -9,7 +9,7 @@ using std::vector;
 void part1(vector<string>& d, vector<coordinate>& g);
 // void pt2(ifstream& d);
 
-vector<string> getData(bool test, vector<coordinate>& galaxies) {
+vector<string> getData(bool test, bool pt2, vector<coordinate>& galaxies) {
     vector<string> data;
     if (test) {
         data = getTestData();
@@ -57,14 +57,26 @@ vector<string> getData(bool test, vector<coordinate>& galaxies) {
             row.push_back(data[i][j]);
             // add the whole row and any extra empty column space
             if (contains(emptyCols, j)) {
-                row.push_back('.');
+                if (pt2) {
+                    for (int i = 0; i < 1000000; i++) {
+                        row.push_back('.');
+                    }
+                } else {
+                    row.push_back('.');
+                }
             }
         }
         // add the row
         expandedSpace.push_back(row);
         // if the whole row is empty, add another row below it
         if (contains(emptyRows, i)) {
-            expandedSpace.push_back(repeat('.', nCols));
+            if (pt2) {
+                for (int i = 0; i < 1000000; i++) {
+                    expandedSpace.push_back(repeat('.', nCols));
+                }
+            } else {
+                expandedSpace.push_back(repeat('.', nCols));
+            }
         }
     }
 
@@ -84,10 +96,12 @@ vector<string> getData(bool test, vector<coordinate>& galaxies) {
 
 int main() {
     bool test = false;
+    bool pt2 = true;
     printf("*******\nDay 11\n");
     vector<coordinate> galaxies;  // don't pass mutable variables in and have
                                   // something be returned...
-    auto data = getData(test, galaxies);
+    auto data = getData(test, pt2, galaxies);
+    printf("got data...\n");
 
     part1(data, galaxies);
 }

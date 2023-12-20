@@ -1,7 +1,7 @@
 clear
 
 if [[ $# -eq 0 ]]; then
-	n=10
+	n=13
 else
 	n=$1
 fi
