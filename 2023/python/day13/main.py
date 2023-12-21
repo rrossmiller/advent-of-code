@@ -5,6 +5,7 @@ import p2
 def get_data(test=False):
     with open("../data/13.txt") as f:
         rows = f.read().splitlines()
+
     if test:
         rows = """\
 #.##..##.
@@ -39,7 +40,7 @@ def get_data(test=False):
 
 if __name__ == "__main__":
     print("****\nday13")
-    test = True
+    test = False
     data = get_data(test)
     sum = p1.pt1(data)
     print()

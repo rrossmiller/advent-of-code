@@ -68,8 +68,8 @@ def check_symmetry(d):
             b += 1
 
         if is_sym:
-            # print("diff", df)
-            # print_d(d, pivot)
+            print("diff", df)
+            print_d(d, pivot)
             return pivot
     return None
 

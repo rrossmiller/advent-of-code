@@ -73,7 +73,12 @@ def transpose(d):
     for j in range(len(d[0])):
         for i in range(len(d) - 1, -1, -1):
             t[j].append(d[i][j])
-    return t
+
+    rtn = []
+    for i in range(len(t)):
+        rtn.append("".join(x for x in t[i]))
+
+    return rtn
 
 
 # check vertical symmetry
@@ -84,10 +89,8 @@ def print_d(d, p):
         if i == p:
             print(f"--\n  {r}")
         else:
-            print("  " + r)
+            print(" ", r)
         # print(r)
 
     print("-->")
     print()
-
-
