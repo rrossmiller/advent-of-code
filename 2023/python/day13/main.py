@@ -1,4 +1,5 @@
 import p1
+import p2
 
 
 def get_data(test=False):
@@ -38,8 +39,14 @@ def get_data(test=False):
 
 if __name__ == "__main__":
     print("****\nday13")
-    test = False
+    test = True
     data = get_data(test)
     sum = p1.pt1(data)
     print()
     print(f"pt1: {sum}")
+    print()
+    sum = p2.pt2(data)
+    if sum >= 39929:
+        print("too high")
+
+    print(f"pt2: {sum}")

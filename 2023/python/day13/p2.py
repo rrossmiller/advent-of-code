@@ -1,4 +1,7 @@
-def pt1(data: list[list[str]]):
+from p1 import print_d, transpose
+
+
+def pt2(data: list[list[str]]):
     """
     find axis of symmetry and augment with score transform
         ><
@@ -56,38 +59,30 @@ def check_symmetry(d):
         while t >= 0 and b < len(d):
             # print(t, b, len(d))
             # print_d(d[t : b + 1], pivot)
-            if d[t] != d[b]:
+
+            df = diff(d[t], d[b])
+            if df > 1:
                 is_sym = False
                 break
             t -= 1
             b += 1
 
         if is_sym:
-            # print(t + 1, b - 1, "is symm")
+            # print("diff", df)
+            # print_d(d, pivot)
             return pivot
     return None
 
 
-def transpose(d):
-    t = [[] for _ in range(len(d[0]))]
-    for j in range(len(d[0])):
-        for i in range(len(d) - 1, -1, -1):
-            t[j].append(d[i][j])
-    return t
+def diff(a, b):
+    diff = 0
 
-
-# check vertical symmetry
-def print_d(d, p):
-    print(p)
-    print("-->")
-    for i, r in enumerate(d):
-        if i == p:
-            print(f"--\n  {r}")
-        else:
-            print("  " + r)
-        # print(r)
-
-    print("-->")
-    print()
-
-
+    # print(a, "|", b)
+    for x, y in zip(a, b):
+        if x != y:
+            diff += 1
+            # return diff
+        if diff > 1:
+            # print(x, y)
+            return diff
+    return diff
