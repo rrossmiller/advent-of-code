@@ -56,6 +56,7 @@ def check_symmetry(d):
         # check if all of the rows above and below the pivot row are identical
         t = pivot - 1  # top
         b = pivot  # bottom
+        df = 0
         while t >= 0 and b < len(d):
             # print(t, b, len(d))
             # print_d(d[t : b + 1], pivot)
