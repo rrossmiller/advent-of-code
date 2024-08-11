@@ -1,19 +1,28 @@
 #include <cstdio>
 #include <fstream>
+#include <vector>
 
 using std::ifstream;
 
-void pt1(ifstream& d);
-void pt2(ifstream& d);
+void pt1(std::vector<std::string> d);
+void pt2(std::vector<std::string> d);
+
+std::vector<std::string> readF(std::string pth) {
+    std::vector<std::string> rtn;
+    ifstream f(pth);
+
+    std::string line;
+    while (std::getline(f, line)) {
+        rtn.push_back(line);
+    }
+    return rtn;
+}
 int main() {
     printf("Day 1\n");
-    // open the file
-    ifstream dataFile("../data/1.txt");
-    pt1(dataFile);
-    dataFile.close();
+    // read the file
+    auto dat = readF("../data/1.txt");
+    // auto dat = readF("test.txt");
 
-    ifstream f("../data/1.txt");
-    // ifstream f("test.txt");
-    pt2(f);
-    f.close();
+    pt1(dat);
+    // pt2(dat);
 }

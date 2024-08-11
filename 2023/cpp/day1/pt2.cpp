@@ -20,6 +20,10 @@ void pt2(ifstream& dataFile) {
     string line;
     string word = "";
 
+    while (std::getline(dataFile, line)) {
+        std::cout << line << std::endl;
+    }
+    return;
     // for each line
     while (std::getline(dataFile, line)) {
         printf("line: %s\n", line.c_str());
