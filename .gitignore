@@ -6,3 +6,4 @@ target
 data/
 *.class
 __pycache__
+clang*
