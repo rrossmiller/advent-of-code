@@ -19,13 +19,13 @@ func main() {
 	fmt.Printf("Elapsed (atomic): %v\n", end)
 
 	fmt.Println()
-// 	data = `two1nine
-// eightwothree
-// abcone2threexyz
-// xtwone3four
-// 4nineeightseven2
-// zoneight234
-// 7pqrstsixteen`
+	// 	data = `two1nine
+	// eightwothree
+	// abcone2threexyz
+	// xtwone3four
+	// 4nineeightseven2
+	// zoneight234
+	// 7pqrstsixteen`
 	p2(data)
 }
 

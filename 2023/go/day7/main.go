@@ -46,11 +46,11 @@ func (h HandType) String() string {
 var cardOrder []string
 
 type Hand struct {
-	cards    string
-	extraCard  string
-	rank     int
-	bid      int
-	handType HandType
+	cards     string
+	extraCard string
+	rank      int
+	bid       int
+	handType  HandType
 }
 
 func (h Hand) String() string {

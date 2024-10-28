@@ -14,8 +14,8 @@ func main() {
 	// 	fmt.Printf("%T: %v\n", n[0], n)
 	// }
 
-	p1(data,true)
-	p1(data,false)
+	p1(data, true)
+	p1(data, false)
 }
 
 func getData() [][]int64 {
