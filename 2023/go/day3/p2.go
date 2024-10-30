@@ -15,7 +15,7 @@ func p2(dat [][]rune, i, j int, nums []int, visited []Coord) ([]int, []Coord) {
 		if row < 0 || row >= len(dat) || col < 0 || col >= cols {
 			continue
 		}
-		coord := Coord{row, col, &[]int{}}
+		coord := Coord{row, col}
 		line := dat[row]
 		// if the char at the coord is a digit
 		// idx hasn't been checked already
@@ -27,7 +27,7 @@ func p2(dat [][]rune, i, j int, nums []int, visited []Coord) ([]int, []Coord) {
 			r := col + 1
 			// find leftmost limit
 			for l > 0 && unicode.IsDigit(line[l]) {
-				visited = append(visited, Coord{row, l, nil})
+				visited = append(visited, Coord{row, l})
 				l -= 1
 			}
 			if l < 0 || !unicode.IsDigit(line[l]) {
@@ -35,7 +35,7 @@ func p2(dat [][]rune, i, j int, nums []int, visited []Coord) ([]int, []Coord) {
 			}
 			// find rightmost limit
 			for r < len(line) && unicode.IsDigit(line[r]) {
-				visited = append(visited, Coord{row, r, nil})
+				visited = append(visited, Coord{row, r})
 				r += 1
 			}
 

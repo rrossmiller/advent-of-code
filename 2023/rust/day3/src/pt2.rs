@@ -1,3 +1,5 @@
+use crate::pt1::Coord;
+
 const DIRECTIONS: [(i32, i32); 8] = [
     (-1, -1), // UL
     (-1, 0),  //U
@@ -8,12 +10,11 @@ const DIRECTIONS: [(i32, i32); 8] = [
     (1, 0),   //D
     (1, 1),   //DR
 ];
-#[derive(Debug, PartialEq)]
-pub struct Coord(pub usize, pub usize);
 
 pub fn run(dat: &str, i: usize, j: usize, nums: &mut Vec<i32>, visited: &mut Vec<Coord>) {
     let dat = dat.lines().collect::<Vec<&str>>();
     let cols = dat[0].len();
+    let mut found_nums = vec![];
 
     // bfs to look around the symbol
     for d in DIRECTIONS {
@@ -54,7 +55,11 @@ pub fn run(dat: &str, i: usize, j: usize, nums: &mut Vec<i32>, visited: &mut Vec
                 r += 1;
             }
             let n: i32 = line[l..r].parse().unwrap();
-            nums.push(n);
+            found_nums.push(n);
         }
+    }
+
+    if found_nums.len() == 2 {
+        nums.push(found_nums[0] * found_nums[1])
     }
 }

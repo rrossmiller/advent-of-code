@@ -12,7 +12,7 @@ const TEST: bool = false;
 fn main() -> std::io::Result<()> {
     let dat = read()?;
     run(&dat, Part::P1);
-    // run(&dat, Part::P2);
+    run(&dat, Part::P2);
 
     Ok(())
 }
@@ -25,10 +25,10 @@ fn run(dat: &str, p: Part) {
         // for every char in the line!()
         for (j, c) in line.chars().enumerate() {
             // if the char is a symbol, look around it for numbers
-            if c.is_digit(10) && c != '.' {
+            if !c.is_digit(10) && c != '.' {
                 match p {
                     Part::P1 => pt1::run(dat, i, j, &mut nums, &mut visited),
-                    Part::P2 => todo!(),
+                    Part::P2 => pt2::run(dat, i, j, &mut nums, &mut visited),
                 }
             }
         }
@@ -39,7 +39,11 @@ fn run(dat: &str, p: Part) {
             nums.iter().sum::<i32>(),
             nums.iter().sum::<i32>() == 536202
         ),
-        Part::P2 => todo!(),
+        Part::P2 => println!(
+            "p2: {} ({})",
+            nums.iter().sum::<i32>(),
+            nums.iter().sum::<i32>() == 78272573
+        ),
     }
 }
 fn read() -> io::Result<String> {
