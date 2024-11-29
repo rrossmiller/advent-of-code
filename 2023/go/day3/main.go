@@ -52,7 +52,9 @@ func run(data string, part uint) {
 				case P1:
 					nums, visited = p1(dat, i, j, nums, visited)
 				case P2:
-					nums, visited = p2(dat, i, j, nums, visited)
+					if r == '*' {
+						nums, visited = p2(dat, i, j, nums, visited)
+					}
 				}
 			}
 		}
