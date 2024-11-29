@@ -1,7 +1,8 @@
 build
 node_modules
 *.txt
-aoc
+**/go/aoc
+**/cpp/aoc
 target
 data/
 *.class
