@@ -1,3 +1,4 @@
+tmp
 build
 node_modules
 *.txt
@@ -8,3 +9,12 @@ data/
 *.class
 __pycache__
 .clang*
+
+pyrightconfig.json
+.classpath
+.factorypath
+.project
+.settings
+dependency-reduced-pom*
+.zig-cache
+zig-out

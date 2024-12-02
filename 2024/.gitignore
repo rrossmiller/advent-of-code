@@ -1,7 +1,0 @@
-pyrightconfig.json
-target
-.classpath
-.factorypath
-.project
-.settings
-dependency-reduced-pom*
