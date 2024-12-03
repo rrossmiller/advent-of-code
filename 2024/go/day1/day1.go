@@ -13,9 +13,6 @@ func Run(data []string) error {
 	lIds := make([]int, 0, len(data))
 	rIds := make([]int, 0, len(data))
 	for _, line := range data {
-		if len(line) == 0 {
-			continue
-		}
 		nums := strings.Split(line, " ")
 
 		l, err := strconv.Atoi(nums[0])

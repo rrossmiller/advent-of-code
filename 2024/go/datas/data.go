@@ -20,5 +20,6 @@ func GetData(day string, test bool) []string {
 		return lines[:testLine]
 	}
 
-	return lines[testLine+1:]
+
+	return lines[testLine+1:len(lines)-1]
 }
