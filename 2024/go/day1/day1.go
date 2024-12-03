@@ -1,15 +1,13 @@
 package day1
 
 import (
-	"aoc/datas"
 	"fmt"
 	"slices"
 	"strconv"
 	"strings"
 )
 
-func Run(test bool) {
-	data := datas.GetData("1.txt", test)
+func Run(data []string) error {
 
 	// get the left and right numbers
 	lIds := make([]int, 0, len(data))
@@ -22,11 +20,11 @@ func Run(test bool) {
 
 		l, err := strconv.Atoi(nums[0])
 		if err != nil {
-			panic(err)
+			return err
 		}
 		r, err := strconv.Atoi(nums[len(nums)-1])
 		if err != nil {
-			panic(err)
+			return err
 		}
 		lIds = append(lIds, l)
 		rIds = append(rIds, r)
@@ -36,10 +34,10 @@ func Run(test bool) {
 	slices.Sort(rIds)
 	p1(lIds, rIds)
 	p2(lIds, rIds)
+	return nil
 }
 
 func p1(lIds, rIds []int) {
-
 	dist := 0
 	for i := range len(lIds) {
 		l := lIds[i]
@@ -59,7 +57,8 @@ func p1(lIds, rIds []int) {
 type counter map[int]int
 
 func (c counter) countN(k, v int) {
-	if _, prs := c[k]; prs {
+	_, prs := c[k]
+	if prs {
 		c[k] += v
 	} else {
 		c[k] = v
