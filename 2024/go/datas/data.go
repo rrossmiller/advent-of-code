@@ -5,8 +5,11 @@ import (
 	"strings"
 )
 
-func GetData(day string, test bool) []string {
-	b, _ := os.ReadFile("../data/" + day)
+func GetData(day string, test bool) ([]string, error) {
+	b, err := os.ReadFile("../data/" + day)
+	if err != nil {
+		return nil, err
+	}
 	lines := strings.Split(string(b), "\n")
 	testLine := 0
 	for i := range len(lines) {
@@ -17,9 +20,8 @@ func GetData(day string, test bool) []string {
 	}
 
 	if test {
-		return lines[:testLine]
+		return lines[:testLine], nil
 	}
 
-
-	return lines[testLine+1:len(lines)-1]
+	return lines[testLine+1 : len(lines)-1], nil
 }

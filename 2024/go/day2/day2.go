@@ -6,7 +6,6 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
-	"time"
 )
 
 func Run(dat []string) error {
@@ -15,10 +14,8 @@ func Run(dat []string) error {
 		return err
 	}
 
-	// p1(data)
-	start := time.Now()
+	p1(data)
 	p2(data)
-	fmt.Println(time.Since(start))
 
 	return nil
 }
@@ -60,7 +57,7 @@ func checkLine(line []int) bool {
 		}
 
 		if inc {
-			diff *= -1
+			diff = diff * -1
 		}
 
 		// Ok if any two adjacent levels differ by at least one and at most three.
@@ -74,27 +71,28 @@ func checkLine(line []int) bool {
 }
 
 func p2(data [][]int) {
-	var wg sync.WaitGroup
-	var numOk atomic.Uint32
+	// var wg sync.WaitGroup
+	// var numOk atomic.Uint32
+	var numOk int
 
 	// concurrently check every line
 	for _, d := range data {
-		wg.Add(1)
+		// wg.Add(1)
 		// go func() {
-		func() {
-			fmt.Println(d)
-			defer wg.Done()
-			ok := checkLine2(d)
-			if ok {
-				numOk.Add(1)
-			}
-		}()
+		// func() {
+		fmt.Println(d)
+		// defer wg.Done()
+		ok := checkLine2(d)
+		if ok {
+			numOk += 1
+		}
+		// }()
 		fmt.Println()
 	}
-	wg.Wait()
+	// wg.Wait()
 
-	fmt.Printf("Part 2: %d\n", numOk.Load())
-	fmt.Println("too low", numOk.Load() <= 268)
+	fmt.Printf("Part 2: %d\n", numOk)
+	fmt.Println("too low", numOk <= 268)
 }
 
 func checkLine2(line []int) bool {
@@ -107,16 +105,19 @@ func checkLine2(line []int) bool {
 		// Ok if the levels are either all increasing or all decreasing.
 		if inc && diff > 0 {
 			fmt.Println(inc, diff, "should be neg")
+			fmt.Println([]int{7, 8, 2, 1}, "..", checkLine([]int{7, 8, 2, 1}))
 			dat := removeIdx(line, i-1)
+			dat1 := removeIdx(line, i)
 			fmt.Println(line, dat, i)
-			fmt.Println(line, removeIdx(line, i), i)
-			return checkLine(removeIdx(line, i-1)) || checkLine(removeIdx(line, i))
+			fmt.Println(line, dat1, i)
+			return checkLine(dat) || checkLine(dat1)
 		} else if !inc && diff < 0 {
 			fmt.Println(inc, diff, "should be pos")
 			dat := removeIdx(line, i-1)
+			dat1 := removeIdx(line, i)
 			fmt.Println(line, dat, i)
-			fmt.Println(line, removeIdx(line, i), i)
-			return checkLine(removeIdx(line, i-1)) || checkLine(removeIdx(line, i))
+			fmt.Println(line, dat1, i)
+			return checkLine(dat) || checkLine(dat1)
 		}
 
 		if inc {
@@ -127,9 +128,10 @@ func checkLine2(line []int) bool {
 		if diff < 1 || diff > 3 {
 			fmt.Println(inc, diff, "wrong diff")
 			dat := removeIdx(line, i-1)
+			dat1 := removeIdx(line, i)
 			fmt.Println(line, dat, i)
-			fmt.Println(line, removeIdx(line, i), i)
-			return checkLine(removeIdx(line, i-1)) || checkLine(removeIdx(line, i))
+			fmt.Println(line, dat1, i)
+			return checkLine(dat) || checkLine(dat1)
 		}
 	}
 

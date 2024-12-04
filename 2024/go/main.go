@@ -4,6 +4,7 @@ import (
 	"aoc/datas"
 	"aoc/day1"
 	"aoc/day2"
+	"aoc/day3"
 	"flag"
 	"fmt"
 	"path/filepath"
@@ -30,14 +31,20 @@ func main() {
 	}
 	fmt.Printf("Running day %s\n\n", day)
 
-	data := datas.GetData(day+".txt", test)
+	data, err := datas.GetData(day+".txt", test)
+	if err != nil {
+		panic(err)
+	}
 
-	var err error
 	switch day {
 	case "1":
 		err = day1.Run(data)
 	case "2":
 		err = day2.Run(data)
+	case "3":
+		err = day3.Run(data)
+	default:
+		fmt.Printf("You haven't written day %s yet\n", day)
 	}
 	if err != nil {
 		panic(err)
