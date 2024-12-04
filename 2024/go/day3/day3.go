@@ -30,6 +30,7 @@ func Run(data []string) error {
 func p1(data []string) error {
 	sum := 0
 	for _, line := range data {
+		// find instances of mul(n,n) in the line
 		matches := mulRegex.FindAllStringSubmatch(line, -1)
 		for _, m := range matches {
 			ans, err := product(m[1:3])
@@ -48,6 +49,7 @@ func p2(data []string) error {
 	sum := 0
 	op := true
 	for _, line := range data {
+		// find instances of mul, do and don't in the line
 		mul := mulRegex.FindAllStringSubmatchIndex(line, -1)
 		do := doRegex.FindAllStringIndex(line, -1)
 		dont := dontRegex.FindAllStringIndex(line, -1)
@@ -55,6 +57,7 @@ func p2(data []string) error {
 		matches = append(matches, mul...)
 		matches = append(matches, do...)
 		matches = append(matches, dont...)
+		// put them in order
 		slices.SortFunc(matches, func(a, b []int) int {
 			if a[0] < b[0] {
 				return -1
@@ -65,6 +68,7 @@ func p2(data []string) error {
 		})
 		for _, m := range matches {
 			phrase := line[m[0]:m[1]]
+			// only get the product if you're in a do section
 			if op && strings.Contains(phrase, "mul") {
 				a := line[m[2]:m[3]]
 				b := line[m[4]:m[5]]
@@ -83,8 +87,8 @@ func p2(data []string) error {
 	fmt.Printf("Part 2: %d\n", sum)
 	return nil
 }
-func product(m []string) (int, error) {
 
+func product(m []string) (int, error) {
 	a, err := strconv.Atoi(m[0])
 	if err != nil {
 		return 0, err
