@@ -18,3 +18,4 @@ pyrightconfig.json
 dependency-reduced-pom*
 .zig-cache
 zig-out
+.DS_Store
