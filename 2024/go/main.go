@@ -7,6 +7,7 @@ import (
 	"aoc/day3"
 	"aoc/day4"
 	"aoc/day5"
+	"aoc/day6"
 	"flag"
 	"fmt"
 	"path/filepath"
@@ -49,6 +50,8 @@ func main() {
 		err = day4.Run(data)
 	case "5":
 		err = day5.Run(data)
+	case "6":
+		err = day6.Run(data)
 	default:
 		fmt.Printf("You haven't written day %s yet\n", day)
 	}
