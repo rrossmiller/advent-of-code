@@ -7,11 +7,6 @@ import (
 	"strings"
 )
 
-type order struct {
-	A int
-	B int
-}
-
 func Run(data []string) error {
 	ordering := map[int][]int{}
 	updates := [][]int{}
@@ -41,12 +36,7 @@ func Run(data []string) error {
 		}
 
 	}
-	// for k, v := range ordering {
-	// 	fmt.Println(k, v)
-	// }
-	// fmt.Println()
-	// fmt.Println(updates)
-	// fmt.Println()
+
 	err := p1(ordering, updates)
 	if err != nil {
 		return err
