@@ -21,7 +21,8 @@ func Run(data []string) error {
 			if err != nil {
 				return err
 			}
-			if _, prs := ordering[nums[0]]; prs {
+			_, prs := ordering[nums[0]]
+			if prs {
 				ordering[nums[0]] = append(ordering[nums[0]], nums[1])
 			} else {
 				ordering[nums[0]] = []int{nums[1]}
