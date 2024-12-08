@@ -48,7 +48,10 @@ func Run(data []string) error {
 	ROWS = len(lines)
 	COLS = len(lines[0])
 
-	p1(lines)
+	err := p1(lines)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -76,7 +79,7 @@ func p1(lines [][]rune) error {
 					fmt.Printf("%c", c)
 				} else {
 					s := strings.ToLower(string(c))
-					fmt.Printf(s)
+					fmt.Print(s)
 				}
 			}
 			fmt.Print("\n")
