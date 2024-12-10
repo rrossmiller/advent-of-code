@@ -1,6 +1,7 @@
 package day6
 
 import (
+	"errors"
 	"fmt"
 )
 
@@ -107,8 +108,8 @@ func p2(startingPos []int, room [][]rune, direction DIR) error {
 
 
 	*/
-test all candidates independently
-	use p1
+	return errors.New(`test all candidates independently
+use p1`)
 
 	startingDir := direction
 	visited := map[string]DIR{}
