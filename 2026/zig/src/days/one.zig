@@ -1,7 +1,7 @@
 const std = @import("std");
-const TEN_MB = 1024 * 1000 * 10;
 
-pub fn run() !void {
+pub fn run(input: []const u8) !void {
+    std.debug.print("Running day ONE\n", .{});
     // std.debug.print("*{d}\n", .{@mod(-1012, 100)});
     // std.debug.print("*{d}\n", .{-1012 / 100});
     // std.debug.print("\n", .{});
@@ -10,18 +10,6 @@ pub fn run() !void {
     // std.debug.print("*{d}\n", .{112 / 100});
     // if (true)
     //     return;
-    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
-    const allocator = gpa.allocator();
-    defer {
-        const c = gpa.deinit();
-        switch (c) {
-            .ok => {},
-            .leak => std.debug.print("leaked\n", .{}),
-        }
-    }
-    const input = try get_intput(allocator);
-    defer allocator.free(input);
-
     try p1(input);
     try p2(input);
 }
@@ -173,24 +161,4 @@ fn p2_mod(input: []const u8) !void {
     std.debug.print("p2: {d}\n", .{zero});
     std.debug.print("6273 too high\n", .{});
     std.debug.print("6070 not right\n", .{});
-}
-
-fn get_intput(allocator: std.mem.Allocator) ![]const u8 {
-    if (false) {
-        const x =
-            \\L68
-            \\L30
-            \\R48
-            \\L5
-            \\R60
-            \\L55
-            \\L1
-            \\L99
-            \\R14
-            \\L82
-        ;
-        return try allocator.dupe(u8, x);
-    }
-    const f = try std.fs.cwd().readFileAlloc(allocator, "../data/one.txt", TEN_MB);
-    return f;
 }
