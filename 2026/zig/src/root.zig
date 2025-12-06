@@ -1,12 +1,12 @@
 const std = @import("std");
 const one = @import("days/one.zig");
 const two = @import("days/two.zig");
-// const three = @import("three.zig");
-// const four = @import("four.zig");
-// const five = @import("five.zig");
-// const six = @import("six.zig");
-// const seven = @import("seven.zig");
-// const eight = @import("eight.zig");
+const three = @import("days/three.zig");
+// const four = @import("days/four.zig");
+// const five = @import("days/five.zig");
+// const six = @import("days/six.zig");
+// const seven = @import("days/seven.zig");
+// const eight = @import("days/eight.zig");
 
 const TEN_MB = 1024 * 1000 * 10;
 
@@ -35,12 +35,18 @@ pub fn run(allocator: std.mem.Allocator, day: u8, test_data: bool) !void {
     if (!test_data) {
         input = iter.next().?;
     }
-    input = input[1..]; // skip opening newline
+    if (input[0] == '\n') {
+        input = input[1..]; // skip opening newline
+    }
+    if (input[input.len - 1] == '\n') {
+        input = input[0 .. input.len - 1];
+    }
 
     // run the code
     switch (day) {
         1 => try one.run(input),
-        2 => try two.run(input),
+        2 => try two.run(allocator, input),
+        3 => try three.run(allocator, input),
         else => try one.run(input),
     }
 }

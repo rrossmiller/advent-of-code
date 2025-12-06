@@ -2,14 +2,6 @@ const std = @import("std");
 
 pub fn run(input: []const u8) !void {
     std.debug.print("Running day ONE\n", .{});
-    // std.debug.print("*{d}\n", .{@mod(-1012, 100)});
-    // std.debug.print("*{d}\n", .{-1012 / 100});
-    // std.debug.print("\n", .{});
-    // std.debug.print("*{d}\n", .{@mod(1012, 100)});
-    // std.debug.print("*{d}\n", .{1012 / 100});
-    // std.debug.print("*{d}\n", .{112 / 100});
-    // if (true)
-    //     return;
     try p1(input);
     try p2(input);
 }
