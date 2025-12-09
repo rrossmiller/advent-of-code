@@ -2,7 +2,7 @@ const std = @import("std");
 const one = @import("days/one.zig");
 const two = @import("days/two.zig");
 const three = @import("days/three.zig");
-// const four = @import("days/four.zig");
+const four = @import("days/four.zig");
 // const five = @import("days/five.zig");
 // const six = @import("days/six.zig");
 // const seven = @import("days/seven.zig");
@@ -18,11 +18,11 @@ pub fn run(allocator: std.mem.Allocator, day: u8, test_data: bool) !void {
         1 => day_str = "one",
         2 => day_str = "two",
         3 => day_str = "three",
-        4 => {},
-        5 => {},
-        6 => {},
-        7 => {},
-        8 => {},
+        4 => day_str = "four",
+        5 => day_str = "five",
+        6 => day_str = "six",
+        7 => day_str = "seven",
+        8 => day_str = "eight",
         else => unreachable,
     }
 
@@ -46,7 +46,8 @@ pub fn run(allocator: std.mem.Allocator, day: u8, test_data: bool) !void {
     switch (day) {
         1 => try one.run(input),
         2 => try two.run(allocator, input),
-        3 => try three.run(allocator, input),
+        3 => try three.run(input),
+        4 => try four.run(allocator,input),
         else => try one.run(input),
     }
 }

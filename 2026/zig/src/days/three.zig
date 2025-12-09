@@ -1,12 +1,12 @@
 const std = @import("std");
 
-pub fn run(allocator: std.mem.Allocator, input: []const u8) !void {
+pub fn run(input: []const u8) !void {
     std.debug.print("Running day THREE\n", .{});
-    try p1(allocator, input);
+    try p1(input);
     // try p2(allocator, input);
 }
 
-fn p1(_: std.mem.Allocator, input: []const u8) !void {
+fn p1(input: []const u8) !void {
     var sum: u32 = 0;
 
     var iter = std.mem.splitScalar(u8, input, '\n');
